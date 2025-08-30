@@ -2,27 +2,173 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
   <title>Frontend Mentor | QR code component</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   <style>
-    .attribution { font-size: 11px; text-align: center; }
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+    }
+    body {
+      min-height: 100vh;
+      font-family: 'Outfit', Arial, sans-serif;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .background-blue {
+      background: #d5e1ef;
+      width: 90vw;
+      height: 75vh;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      box-shadow: 0 40px 40px 0 rgba(31, 49, 79, 0.18), 0 1.5px 8px 0 rgba(31, 49, 79, 0.10);
+    }
+    .main-container {
+      position: relative;
+      z-index: 1;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      pointer-events: none;
+    }
+    .qr-card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      width: 200px;
+      min-height: 260px; /* tăng cao hơn 20% */
+      padding: 12px 8px 20px 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 30px;
+      z-index: 2;
+      pointer-events: auto;
+    }
+    .qr-card img {
+      width: 180px;
+      height: 180px;
+      border-radius: 16px;
+      margin-bottom: 30px; /* tăng khoảng cách dưới ảnh */
+    }
+    .qr-card h1 {
+      font-size: 16px; /* tăng lên 2 mức từ 12px */
+      font-weight: 700;
+      color: #1f314f;
+      text-align: center;
+      margin: 0 0 20px 0; /* tăng khoảng cách dưới heading */
+    }
+    .qr-card p {
+      font-size: 10px; /* tăng lên 2 mức từ 8px */
+      color: #7b879d;
+      text-align: center;
+      margin: 0;
+      font-weight: 400;
+    }
+    .decorative-dots-group {
+      position: absolute;
+      left: -10px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+      z-index: 3;
+      pointer-events: none;
+      /* Xóa mọi padding/margin nếu có */
+    }
+    .decorative-dots-col {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      /* Xóa mọi padding/margin nếu có */
+    }
+    .decorative-dot,
+    .decorative-dot.clipped {
+      margin: -1;
+      padding: 0;
+      /* Không cần chỉnh gì thêm, đã sát trái */
+    }
+    .decorative-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #0b9fc1;
+      opacity: 0.85;
+    }
+    .decorative-dot.clipped {
+      clip-path: inset(0 0 0 50%);
+    }
+    .attribution {
+      font-size: 8px;
+      text-align: center;
+      margin-top: 12px;
+      color: #234fa0;
+      z-index: 3;
+      position: relative;
+      pointer-events: auto;
+    }
     .attribution a { color: hsl(228, 45%, 44%); }
+    .decorative-L {
+      position: fixed;
+      top: -20px;
+      right: 600px;
+      width: 48px;      /* chiều ngang chữ L */
+      height: 90px;     /* chiều dọc chữ L */
+      border-left: 10px solid #f7cdd1;  /* nét dày, đỏ nhạt */
+      border-bottom: 10px solid #f7cdd1;
+      border-radius: 0 0 0 18px;
+      box-sizing: border-box;
+      z-index: 100;
+      background: transparent;
+    }
   </style>
 </head>
 <body>
-
-  Improve your front-end skills by building projects
-
-  Scan the QR code to visit Frontend Mentor and take your coding skills to the next level
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+  <div class="decorative-L"></div>
+  <div class="background-blue"></div>
+  <div class="main-container">
+    <div class="decorative-dots-group">
+      <div class="decorative-dots-col">
+        <div class="decorative-dot clipped"></div>
+        <div class="decorative-dot clipped"></div>
+        <div class="decorative-dot clipped"></div>
+        <div class="decorative-dot clipped"></div>
+        <div class="decorative-dot clipped"></div>
+        <div class="decorative-dot clipped"></div>
+      </div>
+      <div class="decorative-dots-col">
+        <div class="decorative-dot"></div>
+        <div class="decorative-dot"></div>
+        <div class="decorative-dot"></div>
+        <div class="decorative-dot"></div>
+        <div class="decorative-dot"></div>
+        <div class="decorative-dot"></div>
+      </div>
+    </div>
+    
+    <div class="qr-card">
+      <img src="./images/image-qr-code.png" alt="QR code to Frontend Mentor">
+      <h1>Improve your front-end skills by building projects</h1>
+      <p>Scan the QR code to visit Frontend Mentor and take your coding skills to the next level</p>
+    </div>
+    <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+      Coded by <a href="#">Nguyen Luc Duc</a>.
+    </div>
   </div>
 </body>
 </html>
